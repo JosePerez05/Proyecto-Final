@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Model
 {
-    class Secciones
+    public class Secciones
     {
-        public int SecciontId { get; set; }
-        public int MateriaID { get; set; }
-        public string Materia { get; set; }
+        public int SeccionId { get; set; }
+        public int MateriaForeingKey { get; set; }
         public string Aula { get; set; }
+        public Materia Materia { get; set; }
     }
 }
+

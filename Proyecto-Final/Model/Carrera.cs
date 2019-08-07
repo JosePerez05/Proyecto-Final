@@ -4,10 +4,15 @@ using System.Text;
 
 namespace Model
 {
-    class Carrera
+    public  class Carrera
     {
         public int CarreraId { get; set; }
         public string Nombre { get; set; }
-        public string EstudianteId{ get; set; }
+        public int EstudianteForeingKey{ get; set; }
+        public Estudiante Estudiante { get; set; }
+
     }
 }
+
+
+
