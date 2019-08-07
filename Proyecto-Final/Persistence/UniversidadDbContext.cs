@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Persistence
 {
-    class UniversidadDbContext : DbContext
+   public class UniversidadDbContext : DbContext
     {
         public UniversidadDbContext(DbContextOptions<UniversidadDbContext> options) : base(options)
         {
-            //Database.Migrate();
+
         }
+        
+
         public DbSet<Carrera> Carrera { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
