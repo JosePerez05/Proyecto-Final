@@ -12,8 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Persistence;
-
-
+using Services;
 
 namespace Proyecto_Final
 {
@@ -32,8 +31,13 @@ namespace Proyecto_Final
             var connection = Configuration.GetConnectionString("Dev"); 
             services.AddDbContext<UniversidadDbContext>
                 (options => options.UseSqlServer(connection));
+            services.AddTransient<IEstudianteService, Estudianteservice>();
+            services.AddTransient<ICarreraService, Carreraservice>();
+            services.AddTransient<IProfesorService, Profesorservice>();
+            services.AddTransient<IMateriaService, Materiaservice>();
+            services.AddTransient<ISeccionesService, Seccionesservice>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-           
+            
 
         }
 
