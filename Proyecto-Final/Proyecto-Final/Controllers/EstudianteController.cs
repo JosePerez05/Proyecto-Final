@@ -9,13 +9,13 @@ using Services;
 namespace Proyecto_Final.Controllers
 {
     [Route("Estudiantecontroller")]
-    public class StudentController : Controller
+    public class EstudianteController : Controller
     {
         private readonly IEstudianteService _estudianteService;
 
-        public StudentController(IEstudianteService studentService)
+        public EstudianteController(IEstudianteService EstudianteService)
         {
-            _estudianteService = studentService;
+            _estudianteService = EstudianteService;
         }
 
         // GET api/values
