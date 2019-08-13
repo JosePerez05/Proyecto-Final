@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Persistence;
 using Services;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Proyecto_Final
 {
@@ -29,15 +30,15 @@ namespace Proyecto_Final
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("Dev"); 
-            services.AddDbContext<UniversidadDbContext>
-                (options => options.UseSqlServer(connection));
+            services.AddDbContext<UniversidadDbContext> (options => options.UseSqlServer(connection));
             services.AddTransient<IEstudianteService, Estudianteservice>();
             services.AddTransient<ICarreraService, Carreraservice>();
             services.AddTransient<IProfesorService, Profesorservice>();
             services.AddTransient<IMateriaService, Materiaservice>();
             services.AddTransient<ISeccionesService, Seccionesservice>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+            services.AddSwaggerGen(c => {c.SwaggerDoc("v1", new Info { Title = "universidad API", Version = "V1" });
+            });
 
         }
 
@@ -55,6 +56,10 @@ namespace Proyecto_Final
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "post API V1");
+            });
         }
     }
 }
