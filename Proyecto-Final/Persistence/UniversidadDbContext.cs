@@ -11,7 +11,6 @@ namespace Persistence
 
         }
         
-
         public DbSet<Carrera> Carrera { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,7 +35,6 @@ namespace Persistence
             .WithMany(e => e.Carrera)
             .HasForeignKey(c => c.EstudianteForeingKey);
            
-
             modelBuilder.Entity<Materia>()
                 .HasOne(m => m.Profesor)
                 .WithMany(p => p.Materia)

@@ -58,11 +58,12 @@ namespace Services
             }
 
             return result;
-        }
+        }   
         public bool Add(Estudiante Model )
         {
             try
             {
+
                 _universidadDbContext.Add(Model);
                 _universidadDbContext.SaveChanges();
 
